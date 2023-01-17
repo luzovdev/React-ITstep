@@ -10,12 +10,12 @@ export const Age = () => {
 
     return (
         <>
-            <hr>
-                <h2>Ages counter</h2>
-                <div>{age}</div>
-                <button onClick={dec}>-</button>
-                <button onClick={inc}>+</button>
-            </hr>
+          <hr/>
+            <h2>Ages counter</h2>
+            <div>{age}</div>
+            <button onClick={dec}>-</button>
+            <button onClick={inc}>+</button>
+            
         </>
     )
 }
