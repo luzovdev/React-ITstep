@@ -10,18 +10,20 @@ export const App = () => {
     const [count,setCount] = useState(0);
     const onInputChange = ({target : {value}}) => {setInputValue(value)}
 
-    const verifyHandler = useCallback(
-        (userId) => {
-            setUsers(users.map(({verified,...user})=> ({
-                ...user,
-                verified : user.id === userId ? !verified : verified
-            })))
-        },
-        [setUsers,users]
-    );
+  
+        const rawVerifyHandler = (userId) => {
+            setUsers(
+              (
+                oldUsers
+              ) =>
+                oldUsers.map(({ verified, ...user }) => ({
+                  ...user,
+                  verified: user.id === userId ? !verified : verified,
+                }))
+            );
+          };
     
-    
-   
+          const verifyHandler = useCallback(rawVerifyHandler, [setUsers]);
 
     useEffect(() => {
         fetch('https://reqres.in/api/users?page=2')
